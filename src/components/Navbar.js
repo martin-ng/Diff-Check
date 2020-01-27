@@ -6,7 +6,7 @@ const Navbar = () => {
     <nav className="nav-wrapper grey darken-3">
       <div className="container">
         <Link to="/" className="brand-logo">
-          Diff Check
+          Diff Check!
         </Link>
       </div>
     </nav>
