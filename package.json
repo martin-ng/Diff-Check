@@ -22,7 +22,7 @@
     "eject": "react-scripts eject",
     "deploy": "serve -s build",
     "lint": "eslint.js",
-    "test": "eslint **/*.js --ignore-pattern 'node_modules /' --ignore-pattern 'tests/' --ignore-pattern 'server/workers.js'"
+    "test": "test --passWithNoTests"
   },
   "eslintConfig": {
     "extends": "react-app"
