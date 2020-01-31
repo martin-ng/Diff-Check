@@ -10,6 +10,7 @@
     "express": "^4.17.1",
     "express-favicon": "^2.0.1",
     "heroku": "^7.37.0",
+    "lint": "^0.7.0",
     "path": "^0.12.7",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
@@ -19,10 +20,9 @@
   "scripts": {
     "start": "node server.js",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "eslint **/*.js --ignore-pattern 'node_modules /' --ignore-pattern 'tests/' --ignore-pattern 'server/workers.js'",
     "eject": "react-scripts eject",
-    "deploy": "serve -s build",
-    "test": "eslint **/*.js --ignore-pattern 'node_modules /' --ignore-pattern 'tests/' --ignore-pattern 'server/workers.js'"
+    "deploy": "serve -s build"
   },
   "eslintConfig": {
     "extends": "react-app"
