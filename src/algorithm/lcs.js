@@ -37,6 +37,22 @@ function findDiff(beforeText, afterText) {
     }
     overlap = overlapItems;
   }
+
+  if (subLength === 0) {
+    let result = [];
+    beforeText.length && result.push(["-", beforeText]);
+    afterText.length && result.push(["+", afterText]);
+    return result;
+  }
+
+  return [].concat(
+    findDiff(beforeText.slice(0, startOld), afterText.slice(0, startNew)),
+    [["=", afterText.slice(startNew, startNew + subLength)]],
+    findDiff(
+      beforeText.slice(startOld + subLength),
+      afterText.slice(startNew + subLength)
+    )
+  );
 }
 
 // function lcs(text1, text2) {
@@ -57,9 +73,78 @@ function findDiff(beforeText, afterText) {
 //       }
 //     }
 //   }
-//   console.log(grid);
-//   //   return grid[text2.length][text1.length];
+
+//   return grid;
 // }
 
-// sentenceCheck("hi cindy ", "hi martin ");
-// lcs("tim", "time");
+// function lcsTwo(str1, str2) {
+//   var result = [];
+//   for (var i = -1; i < str1.length; i = i + 1) {
+//     result[i] = [];
+//     for (var j = -1; j < str2.length; j = j + 1) {
+//       if (i === -1 || j === -1) {
+//         result[i][j] = 0;
+//       } else if (str1[i] === str2[j]) {
+//         result[i][j] = result[i - 1][j - 1] + 1;
+//       } else {
+//         result[i][j] = Math.max(result[i - 1][j], result[i][j - 1]);
+//       }
+//     }
+//   }
+//   return result;
+// }
+
+// function getLcs(str1, str2, i, j) {
+//   let arr = [];
+//   if (i === 0 || j === 0) {
+//     return "";
+//   } else if (str1[i - 1] === str2[j - 1]) {
+//     return getLcs(str1, str2, i - 1, j - 1) + str1[i - 1];
+//   } else if (arr[(i, j - 1)] > arr[(i - 1, j)]) {
+//     return getLcs(str1, str2, i, j - 1);
+//   } else {
+//     return getLcs(str1, str2, i - 1, j);
+//   }
+// }
+
+function getLcs(str1, str2, lcsLengthsMatrix) {
+  var execute = function(i, j) {
+    if (!lcsLengthsMatrix[i][j]) {
+      return "";
+    } else if (str1[i] === str2[j]) {
+      return execute(i - 1, j - 1) + str1[i];
+    } else if (lcsLengthsMatrix[i][j - 1] > lcsLengthsMatrix[i - 1][j]) {
+      return execute(i, j - 1);
+    } else {
+      return execute(i - 1, j);
+    }
+  };
+  return execute(str1.length - 1, str2.length - 1);
+}
+
+// return function (str1, str2) {
+//   var lcsLengthsMatrix = getLcsLengths(str1, str2);
+//   return getLcs(str1, str2, lcsLengthsMatrix);
+// };
+// })();
+let str1 = " martin loves to code";
+let str2 = " martin hates to code";
+// let str1 = "abcd";
+// let str2 = "axxcda";
+// let str1 = "martin";
+// let str2 = "martin";
+
+// let lcsLengths = lcs(str1, str2);
+// let lcsLengths = lcs(str1, str2);
+// console.log(lcsLengths);
+// let getLcsVar = getLcs(str1, str2, str1.length, str2.length);
+let getLcsVar = getLcs(str1, str2, lcsTwo);
+
+let diff = findDiff(str1, str2);
+console.log("getLcsVar: ", getLcsVar);
+console.log(diff);
+console.log("lcs: ", lcs(str1, str2));
+console.log("lcsTwo: ", lcsTwo(str1, str2));
+// console.log("getLcs: ", getLcs);
+// let lcsLengths = lcs("tim", "time");
+// console.log(lcsLengths);
