@@ -11,21 +11,20 @@ class TextInputs extends Component {
       first: "",
       second: "",
       checking: false
-      // loading: true
     };
   }
 
-  checkDifferences = () => {
-    // event.preventDefault();
-    console.log("testing");
-    alert("TESTING THIS");
+  checkDifferences = event => {
+    event.preventDefault();
+    const dataOne = this.state.first;
+    const dataTwo = this.state.second;
+
+    let one = lcs(dataOne, dataTwo);
+    console.log("one: ", one);
   };
 
   handleInputChange = event => {
     event.preventDefault();
-    alert("HI");
-    // console.log(event);
-    // console.log(event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     });
@@ -62,8 +61,8 @@ class TextInputs extends Component {
                 onChange={this.handleInputChange}
               />
             </div>
-            <button className="button" onClick={alert("HI")}>
-              TESTINGsssssssssssssss
+            <button className="button" onClick={this.checkDifferences}>
+              Compare!
             </button>
           </form>
         </div>

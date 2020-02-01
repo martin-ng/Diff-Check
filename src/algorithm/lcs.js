@@ -1,6 +1,4 @@
-// This function logs what was deleted and what was added afterwards
-
-function findDiff(beforeText, afterText) {
+export function findDiff(beforeText, afterText) {
   let beforeMap = {};
 
   for (let i = 0; i < beforeText.length; i++) {
@@ -45,7 +43,7 @@ function findDiff(beforeText, afterText) {
   );
 }
 
-function lcs(text1, text2) {
+export function lcs(text1, text2) {
   if (!text1 || !text2) return 0;
 
   let m = text1.length;
@@ -69,7 +67,7 @@ function lcs(text1, text2) {
   return grid;
 }
 
-function printDifference(grid, text1, text2, i, j) {
+export function printDifference(grid, text1, text2, i, j) {
   console.log("i: ", i);
   console.log("j: ", j);
   if (i > 0 && j > 0 && text1[i - 1] === text2[j - 1]) {
