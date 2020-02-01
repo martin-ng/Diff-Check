@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "../App.css";
 import TextView from "./TextView";
 import Welcome from "./Welcome";
+import { lcs, printDifference } from "../algorithm/lcs";
 
 class TextInputs extends Component {
   constructor(props) {
@@ -9,21 +10,26 @@ class TextInputs extends Component {
     this.state = {
       first: "",
       second: "",
-      checking: true
+      checking: false
       // loading: true
     };
   }
-  handleSubmit = event => {
-    event.preventDefault();
+
+  checkDifferences = () => {
+    // event.preventDefault();
+    console.log("testing");
+    alert("TESTING THIS");
   };
 
   handleInputChange = event => {
     event.preventDefault();
-    console.log(event);
-    console.log(event.target.value);
+    alert("HI");
+    // console.log(event);
+    // console.log(event.target.value);
     this.setState({
       [event.target.name]: event.target.value
     });
+    console.log(this.state);
   };
 
   render() {
@@ -56,7 +62,9 @@ class TextInputs extends Component {
                 onChange={this.handleInputChange}
               />
             </div>
-            <button className="button">Compare!</button>
+            <button className="button" onClick={alert("HI")}>
+              TESTINGsssssssssssssss
+            </button>
           </form>
         </div>
       </div>

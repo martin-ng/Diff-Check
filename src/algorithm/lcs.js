@@ -1,13 +1,3 @@
-// function sentenceCheck(textOne, textTwo) {
-//   let arrOne = textOne.split(" ");
-//   let arrTwo = textTwo.split(" ");
-
-//   let different = false;
-
-//   console.log(arrOne);
-//   //   lcs(arrOne, arrTwo);
-// }
-
 // This function logs what was deleted and what was added afterwards
 
 function findDiff(beforeText, afterText) {
@@ -55,63 +45,50 @@ function findDiff(beforeText, afterText) {
   );
 }
 
-// function lcs(text1, text2) {
-//   if (!text1 || !text2) return 0;
+function lcs(text1, text2) {
+  if (!text1 || !text2) return 0;
 
-//   let grid = new Array(text2.length + 1);
+  let m = text1.length;
+  let n = text2.length;
 
-//   for (let i = 0; i < grid.length; i++) {
-//     grid[i] = new Array(text1.length + 1).fill(0);
-//   }
+  let grid = new Array(m + 1);
 
-//   for (let i = 0; i < text2.length; i++) {
-//     for (let j = 0; j < text1.length; j++) {
-//       if (text2[i] === text1[j]) {
-//         grid[i + 1][j + 1] = grid[i][j] + 1;
-//       } else {
-//         grid[i + 1][j + 1] = Math.max(grid[i][j + 1], grid[i + 1][j]);
-//       }
-//     }
-//   }
+  for (let i = 0; i < grid.length; i++) {
+    grid[i] = new Array(n + 1).fill(0);
+  }
 
-//   return grid;
-// }
+  for (let i = 0; i < m; i++) {
+    for (let j = 0; j < n; j++) {
+      if (text1[i] === text2[j]) {
+        grid[i + 1][j + 1] = grid[i][j] + 1;
+      } else {
+        grid[i + 1][j + 1] = Math.max(grid[i][j + 1], grid[i + 1][j]);
+      }
+    }
+  }
+  return grid;
+}
 
-/* 
-1
-*/
+function printDifference(grid, text1, text2, i, j) {
+  console.log("i: ", i);
+  console.log("j: ", j);
+  if (i > 0 && j > 0 && text1[i - 1] === text2[j - 1]) {
+    printDifference(grid, text1, text2, i - 1, j - 1);
+    console.log(" " + text1[i - 1]);
+  } else {
+    if (j > 0 && (i === 0 || grid[i][j - 1] >= grid[i - 1][j])) {
+      printDifference(grid, text1, text2, i, j - 1);
+    } else if (i > 0 && (j === 0 || grid[i][j - 1] < grid[i - 1][j])) {
+      printDifference(grid, text1, text2, i - 1, j);
+      console.log("- " + text1[i - 1]);
+    }
+  }
+}
 
-/*
-2
-*/
+let X = "martin loves to code";
+let Y = "martin hates to code";
+let m = X.length;
+let n = Y.length;
 
-/*
-
-*/
-
-// return function (str1, str2) {
-//   var lcsLengthsMatrix = getLcsLengths(str1, str2);
-//   return getLcs(str1, str2, lcsLengthsMatrix);
-// };
-// })();
-let str1 = " martin loves to code";
-let str2 = " martin hates to code";
-// let str1 = "abcd";
-// let str2 = "axxcda";
-// let str1 = "martin";
-// let str2 = "martin";
-
-// let lcsLengths = lcs(str1, str2);
-// let lcsLengths = lcs(str1, str2);
-// console.log(lcsLengths);
-// let getLcsVar = getLcs(str1, str2, str1.length, str2.length);
-let getLcsVar = getLcs(str1, str2, lcsTwo);
-
-let diff = findDiff(str1, str2);
-console.log("getLcsVar: ", getLcsVar);
-console.log(diff);
-console.log("lcs: ", lcs(str1, str2));
-console.log("lcsTwo: ", lcsTwo(str1, str2));
-// console.log("getLcs: ", getLcs);
-// let lcsLengths = lcs("tim", "time");
-// console.log(lcsLengths);
+let res = lcs(X, Y);
+printDifference(res, X, Y, m, n);
