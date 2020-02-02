@@ -12,6 +12,13 @@
   margin: 50px;
 }
 
+.textViewBox {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  margin: 50px;
+}
+
 .betweenHeader {
   display: flex;
   justify-content: center;
@@ -20,11 +27,38 @@
   height: 200px;
 }
 
-.textView {
+.lineContent {
+  vertical-align: top;
+  text-align: left;
+}
+
+table {
+  max-width: 100%;
+}
+
+.textCompare {
+  width: 95%;
+  /* max-width: 100%; */
+  border: 1px;
+  background-color: white;
+  /* line-height: normal; */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* .textView {
   display: flex;
   justify-content: center;
   flex-direction: row;
   margin: auto;
+} */
+
+.deleted {
+  background: #ffb366;
+}
+
+.added {
+  background: #00ffcc;
 }
 
 .inputText1 {

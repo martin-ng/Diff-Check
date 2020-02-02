@@ -67,26 +67,24 @@ export function lcs(text1, text2) {
   return grid;
 }
 
+let deleted = [];
+let added = [];
+let same1 = [];
+let same2 = [];
+
 export function printDifference(grid, text1, text2, i, j) {
-  console.log("i: ", i);
-  console.log("j: ", j);
   if (i > 0 && j > 0 && text1[i - 1] === text2[j - 1]) {
     printDifference(grid, text1, text2, i - 1, j - 1);
-    console.log(" " + text1[i - 1]);
+    same1[i - 1] = text1[i - 1];
+    same2[j - 1] = text1[i - 1];
   } else {
     if (j > 0 && (i === 0 || grid[i][j - 1] >= grid[i - 1][j])) {
       printDifference(grid, text1, text2, i, j - 1);
+      added[j - 1] = text2[j - 1];
     } else if (i > 0 && (j === 0 || grid[i][j - 1] < grid[i - 1][j])) {
       printDifference(grid, text1, text2, i - 1, j);
-      console.log("- " + text1[i - 1]);
+      deleted[i - 1] = text1[i - 1];
     }
   }
+  return [same1, deleted, same2, added];
 }
-
-let X = "martin loves to code";
-let Y = "martin hates to code";
-let m = X.length;
-let n = Y.length;
-
-let res = lcs(X, Y);
-printDifference(res, X, Y, m, n);

@@ -10,17 +10,30 @@ class TextInputs extends Component {
     this.state = {
       first: "",
       second: "",
-      checking: false
+      checking: false,
+      comparison: []
     };
   }
 
   checkDifferences = event => {
     event.preventDefault();
-    const dataOne = this.state.first;
-    const dataTwo = this.state.second;
-
+    const dataOne = this.state.first.split(" ");
+    const dataTwo = this.state.second.split(" ");
     let one = lcs(dataOne, dataTwo);
-    console.log("one: ", one);
+    let finalData = printDifference(
+      one,
+      dataOne,
+      dataTwo,
+      dataOne.length,
+      dataTwo.length
+    );
+
+    this.setState({
+      checking: true,
+      comparison: finalData
+    });
+    // let one = lcs(dataOne, dataTwo);
+    // console.log("changing checking");
   };
 
   handleInputChange = event => {
@@ -28,20 +41,21 @@ class TextInputs extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    console.log(this.state);
+    // console.log(this.state);
+    // console.log("differences ", this.state.first);
   };
 
   render() {
     return (
       <div>
         <div>
-          {this.state.checking && <Welcome /> ? (
+          {!this.state.checking && <Welcome /> ? (
             <div className="betweenHeader">
               <Welcome className="welcome" />
             </div>
           ) : (
             <div className="betweenHeader">
-              <TextView />
+              <TextView comparison={this.state.comparison} />
             </div>
           )}
           <form onSubmit={this.handleSubmit}>
@@ -52,13 +66,18 @@ class TextInputs extends Component {
                 name="first"
                 className="inputText1"
                 onChange={this.handleInputChange}
+                // defaultValue="This part of the document has stayed. This paragraph contains
+                // text that is outdated."
               />
+
               <textarea
                 type="text"
                 placeholder="Your text here.."
                 name="second"
                 className="inputText2"
                 onChange={this.handleInputChange}
+                // defaultValue="This is an important notice! It should. This part of the
+                // document has stayed."
               />
             </div>
             <button className="button" onClick={this.checkDifferences}>
