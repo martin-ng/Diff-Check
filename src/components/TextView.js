@@ -5,6 +5,10 @@ class TextView extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      // sameOne: [],
+      // deleted: [],
+      // sameTwo: [],
+      // added: []
       sameOne: [...this.props.comparison[0]],
       deleted: [...this.props.comparison[1]],
       sameTwo: [...this.props.comparison[2]],
@@ -12,13 +16,23 @@ class TextView extends Component {
     };
   }
 
+  // componentDidMount(props) {
+  //   this.setState({
+  //     sameOne: [...this.props.comparison[0]],
+  //     deleted: [...this.props.comparison[1]],
+  //     sameTwo: [...this.props.comparison[2]],
+  //     added: [...this.props.comparison[3]]
+  //   });
+  // }
+
   render() {
     let sameTextOne = this.state.sameOne;
     let deletedTextOne = this.state.deleted;
     let sameTextTwo = this.state.sameTwo;
     let addedTextTwo = this.state.added;
 
-    console.log("text view props sameOne: ", this.state.sameOne);
+    console.log(this.props);
+
     return (
       <div className="textView">
         <table className="textCompare" cellSpacing="0" cellPadding="0">

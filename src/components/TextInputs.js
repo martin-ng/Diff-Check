@@ -15,10 +15,27 @@ class TextInputs extends Component {
     };
   }
 
+  clearAll = event => {
+    event.preventDefault();
+    this.setState({
+      checking: false,
+      comparison: [],
+      first: "",
+      second: ""
+    });
+  };
+
   checkDifferences = event => {
     event.preventDefault();
+    // this.clearAll();
+    this.setState({
+      checking: true,
+      comparison: []
+    });
     const dataOne = this.state.first.split(" ");
     const dataTwo = this.state.second.split(" ");
+    console.log("first: ", this.state.first);
+    console.log("second: ", this.state.second);
     let one = lcs(dataOne, dataTwo);
     let finalData = printDifference(
       one,
@@ -32,6 +49,7 @@ class TextInputs extends Component {
       checking: true,
       comparison: finalData
     });
+    console.log(finalData);
   };
 
   handleInputChange = event => {
@@ -39,6 +57,8 @@ class TextInputs extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
+    // console.log("first: ", this.state.first);
+    // console.log("second: ", this.state.second);
   };
 
   render() {
@@ -51,7 +71,10 @@ class TextInputs extends Component {
             </div>
           ) : (
             <div className="betweenHeader">
-              <TextView comparison={this.state.comparison} />
+              <TextView
+                key={this.state.timestamp}
+                comparison={[...this.state.comparison]}
+              />
             </div>
           )}
           <form onSubmit={this.handleSubmit}>
@@ -79,7 +102,7 @@ class TextInputs extends Component {
                 </button>
               </div>
               <div>
-                <button className="button" onClick={this.checkDifferences}>
+                <button className="button" onClick={this.resetAll}>
                   Clear All!
                 </button>
               </div>
