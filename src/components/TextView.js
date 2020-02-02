@@ -15,15 +15,8 @@ class TextView extends Component {
   render() {
     let sameTextOne = this.state.sameOne;
     let deletedTextOne = this.state.deleted;
-    // let first =
-    //   sameTextOne.length <= deletedTextOne.length
-    //     ? sameTextOne
-    //     : deletedTextOne;
-
     let sameTextTwo = this.state.sameTwo;
     let addedTextTwo = this.state.added;
-    let second =
-      sameTextTwo.length <= addedTextTwo.length ? sameTextTwo : addedTextTwo;
 
     console.log("text view props sameOne: ", this.state.sameOne);
     return (
@@ -88,11 +81,6 @@ class TextView extends Component {
             </tr>
           </tbody>
         </table>
-        {/* <div>
-        <table>
-          <tbody></tbody>
-        </table>
-      </div> */}
       </div>
     );
   }

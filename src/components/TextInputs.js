@@ -32,8 +32,6 @@ class TextInputs extends Component {
       checking: true,
       comparison: finalData
     });
-    // let one = lcs(dataOne, dataTwo);
-    // console.log("changing checking");
   };
 
   handleInputChange = event => {
@@ -41,8 +39,6 @@ class TextInputs extends Component {
     this.setState({
       [event.target.name]: event.target.value
     });
-    // console.log(this.state);
-    // console.log("differences ", this.state.first);
   };
 
   render() {
@@ -51,7 +47,7 @@ class TextInputs extends Component {
         <div>
           {!this.state.checking && <Welcome /> ? (
             <div className="betweenHeader">
-              <Welcome className="welcome" />
+              <h4 className="welcome"> Welcome to Diff Check!</h4>
             </div>
           ) : (
             <div className="betweenHeader">
@@ -66,8 +62,6 @@ class TextInputs extends Component {
                 name="first"
                 className="inputText1"
                 onChange={this.handleInputChange}
-                // defaultValue="This part of the document has stayed. This paragraph contains
-                // text that is outdated."
               />
 
               <textarea
@@ -76,13 +70,20 @@ class TextInputs extends Component {
                 name="second"
                 className="inputText2"
                 onChange={this.handleInputChange}
-                // defaultValue="This is an important notice! It should. This part of the
-                // document has stayed."
               />
             </div>
-            <button className="button" onClick={this.checkDifferences}>
-              Compare!
-            </button>
+            <div className="buttons">
+              <div>
+                <button className="button" onClick={this.checkDifferences}>
+                  Compare!
+                </button>
+              </div>
+              <div>
+                <button className="button" onClick={this.checkDifferences}>
+                  Clear All!
+                </button>
+              </div>
+            </div>
           </form>
         </div>
       </div>
