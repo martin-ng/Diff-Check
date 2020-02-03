@@ -23,7 +23,8 @@
     "eject": "react-scripts eject",
     "deploy": "serve -s build",
     "lint": "eslint.js",
-    "test": "test --passWithNoTests"
+    "test": "test --passWithNoTests",
+    "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "eslintConfig": {
     "extends": "react-app"
