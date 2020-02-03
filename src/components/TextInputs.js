@@ -99,22 +99,24 @@ class TextInputs extends Component {
                 <h4 className="welcome"> Welcome to Diff Check!</h4>
               </div>
             ) : (
-              <div className="containerText">
-                <TextView
-                  textData={[this.state.sameOne, this.state.deleted]}
-                  status={"deleted"}
-                />
-
-                <TextView
-                  textData={[this.state.sameTwo, this.state.added]}
-                  status={"added"}
-                />
+              <div>
+                <div className="containerText">
+                  <TextView
+                    textData={[this.state.sameOne, this.state.deleted]}
+                    status={"deleted"}
+                  />
+                  <TextView
+                    textData={[this.state.sameTwo, this.state.added]}
+                    status={"added"}
+                  />
+                </div>
+                <div className="stats">
+                  <Stats count={this.state.addedLength} status={"deleted"} />{" "}
+                  <Stats count={this.state.deletedLength} status={"added"} />
+                </div>
               </div>
             )}
-            <div className="stats">
-              <Stats count={this.state.addedLength} status={"deleted"} />{" "}
-              <Stats count={this.state.deletedLength} status={"added"} />
-            </div>
+
             <form onSubmit={this.handleSubmit}>
               <div className="textContainer">
                 <textarea
