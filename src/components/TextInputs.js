@@ -111,8 +111,8 @@ class TextInputs extends Component {
                   />
                 </div>
                 <div className="stats">
-                  <Stats count={this.state.addedLength} status={"deleted"} />{" "}
-                  <Stats count={this.state.deletedLength} status={"added"} />
+                  <Stats count={this.state.deletedLength} status={"deleted"} />{" "}
+                  <Stats count={this.state.addedLength} status={"added"} />
                 </div>
               </div>
             )}
