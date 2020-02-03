@@ -76,7 +76,6 @@ class TextInputs extends Component {
       deleted: [...finalData[1]],
       sameTwo: [...finalData[2]],
       added: [...finalData[3]],
-      [event.target.name]: event.target.value,
       deletedLength: delLength,
       addedLength: addLength
     });
@@ -123,6 +122,7 @@ class TextInputs extends Component {
                   type="text"
                   placeholder="Your text here.."
                   name="first"
+                  value={this.state.first}
                   className="inputText1"
                   onChange={this.handleInputChange}
                 />
@@ -131,6 +131,7 @@ class TextInputs extends Component {
                   type="text"
                   placeholder="Your text here.."
                   name="second"
+                  value={this.state.second}
                   className="inputText2"
                   onChange={this.handleInputChange}
                 />

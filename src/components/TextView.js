@@ -6,7 +6,6 @@ const TextView = props => {
   let deletedOrAdded = props.textData[1];
   let status = props.status;
   let lineContent = status === "deleted" ? "lineContentDel" : "lineContentAdd";
-  console.log("textview props: ", props);
 
   return (
     <div className="textView">
