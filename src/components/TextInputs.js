@@ -93,7 +93,6 @@ class TextInputs extends Component {
     return (
       <div>
         <div>
-          {/* <div className="divFiller"></div> */}
           <div>
             {!this.state.checking && <Welcome /> ? (
               <div className="betweenHeader">
@@ -112,8 +111,8 @@ class TextInputs extends Component {
                 />
               </div>
             )}
-            <div>
-              <Stats count={this.state.addedLength} status={"deleted"} />
+            <div className="stats">
+              <Stats count={this.state.addedLength} status={"deleted"} />{" "}
               <Stats count={this.state.deletedLength} status={"added"} />
             </div>
             <form onSubmit={this.handleSubmit}>
@@ -136,17 +135,15 @@ class TextInputs extends Component {
               </div>
             </form>
           </div>
-          <div className="buttons">
-            <div>
-              <button className="button" onClick={this.checkDifferences}>
-                Compare!
-              </button>
-            </div>
-            <div>
-              <button className="button" onClick={this.clearAll}>
-                Clear All!
-              </button>
-            </div>
+          <div className="buttonsContainer">
+            <button className="button" onClick={this.checkDifferences}>
+              Compare!
+            </button>
+          </div>
+          <div className="buttonsContainer">
+            <button className="button" onClick={this.clearAll}>
+              Clear All!
+            </button>
           </div>
         </div>
       </div>

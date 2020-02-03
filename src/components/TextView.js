@@ -5,6 +5,7 @@ const TextView = props => {
   let sameText = props.textData[0];
   let deletedOrAdded = props.textData[1];
   let status = props.status;
+  let lineContent = status === "deleted" ? "lineContentDel" : "lineContentAdd";
   console.log("textview props: ", props);
 
   return (
@@ -12,8 +13,8 @@ const TextView = props => {
       <div style={{ height: "100px" }}></div>
       <table className="textCompare" cellSpacing="0" cellPadding="0">
         <tbody>
-          <tr>
-            <td className="lineContent">
+          <tr className={lineContent}>
+            <td>
               {sameText.length <= deletedOrAdded.length
                 ? deletedOrAdded.map((word, index) => {
                     if (word === undefined) {

@@ -12,10 +12,13 @@
   margin: 50px;
 }
 
-.buttons {
+.buttonsContainer {
+  /* width: 95%; */
   display: flex;
-  flex-direction: column;
   justify-content: center;
+  /* flex-direction: column; */
+  margin: 20px;
+  font-size: 24px;
 }
 
 .container {
@@ -45,11 +48,11 @@
 }
 
 .deleted {
-  background: #ffb366;
+  background: #ffaa00;
 }
 
 .added {
-  background: #00ffcc;
+  background: #66ffcc;
 }
 
 .inputText1 {
@@ -69,8 +72,28 @@
   position: relative;
 }
 
-.lineContent {
+.lineContentDel {
+  background: #ffd9b3;
   vertical-align: top;
+  text-align: left;
+}
+
+.lineContentAdd {
+  background: #b3ffe6;
+  vertical-align: top;
+  text-align: left;
+}
+
+.stats {
+  /* display: flex;
+  flex-wrap: wrap;
+  height: 70px; */
+
+  width: 95%;
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+  margin: auto;
   text-align: left;
 }
 
@@ -84,14 +107,19 @@ table {
 td {
   max-width: 400px;
   width: 100%;
+  padding: 0px;
 }
 
 .textCompare {
   width: 100%;
-  /* border: 1px; */
+
   background-color: white;
-  /* margin-left: auto; */
-  /* margin-right: auto; */
+}
+
+.textView {
+  width: 98%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .textViewBox {
@@ -101,14 +129,35 @@ td {
   margin: 50px;
 }
 
-.textView {
-  width: 98%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .welcome {
   display: flex;
   justify-content: center;
   padding: 50px;
+}
+
+.additions {
+  background: #00ffcc;
+}
+
+.removed {
+  background: #ffb366;
+}
+
+.statsClass {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+.removedDiv {
+  display: inline-block;
+  margin-right: 10px;
+  padding: 0px 2px;
+}
+
+.addDiv {
+  display: inline-block;
+  padding: 0px 2px;
 }
